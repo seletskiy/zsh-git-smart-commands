@@ -5,7 +5,26 @@ efficiently.
 
 All commands comes with default git completion.
 
+# Installation
+
+## zgen
+
+```zsh
+if ! zgen saved; then
+    ...
+
+    zgen load seletskiy/zsh-git-smart-commands
+
+    zgen save
+fi
+```
+
 ## git-smart-commit
+
+With arguments same as `git commit -m`. Without argumenst behaves like `git
+commit -v`.
+
+Also, removes necessity of quotes around commit message.
 
 ```zsh
 alias c='git-smart-commit'
