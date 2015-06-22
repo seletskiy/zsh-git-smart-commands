@@ -1,0 +1,7 @@
+#compdef git-smart-add
+
+function _git-smart-add() {
+    service="git-add" _git "${@}"
+}
+
+_git-smart-add "${@}"

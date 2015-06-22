@@ -1,0 +1,7 @@
+#compdef git-smart-commit
+
+function _git-smart-commit() {
+    service="git-commit" _git "${@}"
+}
+
+_git-smart-commit "${@}"
