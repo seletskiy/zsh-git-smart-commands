@@ -10,13 +10,7 @@ All commands comes with default git completion.
 ## zgen
 
 ```zsh
-if ! zgen saved; then
-    ...
-
-    zgen load seletskiy/zsh-git-smart-commands
-
-    zgen save
-fi
+zgen load seletskiy/zsh-git-smart-commands
 ```
 
 ## git-smart-commit
