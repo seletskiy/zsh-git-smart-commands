@@ -1,0 +1,7 @@
+#compdef git-smart-remote
+
+function _git-smart-remote() {
+    service="git-remote" _git "${@}"
+}
+
+_git-smart-remote "${@}"

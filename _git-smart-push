@@ -1,0 +1,7 @@
+#compdef git-smart-push
+
+function _git-smart-push() {
+    service="git-push" _git "${@}"
+}
+
+_git-smart-push "${@}"

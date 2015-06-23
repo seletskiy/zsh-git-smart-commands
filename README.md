@@ -47,3 +47,32 @@ alias a='git-smart-add'
 
 Without arguments will add all files in the repo to the index. Otherwise will
 act as specified in commmand line.
+
+## git-smart-push
+
+```
+alias p='git-smart-push seletskiy'
+```
+
+Seek for remote named as first argument, and if it is found,
+then push changes to that remote.
+
+Otherwise push to origin.
+
+## git-smart-pull
+
+```zsh
+alias u='git-smart-pull'
+```
+
+If working directory is dirty, then first stash changes, pull
+remote and pop changes back.
+
+## git-smart-remote
+
+```zsh
+alias r='git-smart-remote'
+```
+
+If repo do not have remote yet, will add new remote named
+origin with url specified as first argument.

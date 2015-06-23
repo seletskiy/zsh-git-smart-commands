@@ -1,0 +1,7 @@
+#compdef git-smart-pull
+
+function _git-smart-pull() {
+    service="git-pull" _git "${@}"
+}
+
+_git-smart-pull "${@}"

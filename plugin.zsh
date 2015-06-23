@@ -19,3 +19,30 @@ function git-smart-add() {
         git add "${@}"
     fi
 }
+
+function git-smart-push() {
+    if git remote show -n | grep -qF "$1"; then
+        git push "$1" "${@}"
+    else
+        shift
+        git push origin "${@}"
+    fi
+}
+
+function git-smart-pull() {
+    if [ "$(git status -s)" ]; then
+        git stash -u
+        git pull "${@}"
+        git stash pop
+    else
+        git pull "${@}"
+    fi
+}
+
+function git-smart-remote() {
+    if [ "$(git remote show -n)" ]; then
+        git remote "${@}"
+    else
+        git remote add origin "${@}"
+    fi
+}
