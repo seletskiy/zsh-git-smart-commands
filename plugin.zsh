@@ -2,7 +2,7 @@ function git-smart-commit() {
     if [ $# -eq 0 ]; then
         git commit -v
     else
-        flags=()
+        local flags=()
         while grep -q "^-" <<< "$1"; do
             flags+=("$1")
             shift
@@ -22,7 +22,7 @@ function git-smart-add() {
 
 function git-smart-push() {
     if git remote show -n | grep -qF "$1"; then
-        remote="$1"
+        local remote="$1"
         shift
         git push $remote "${@}"
     else
