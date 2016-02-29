@@ -22,7 +22,9 @@ function git-smart-add() {
 
 function git-smart-push() {
     if git remote show -n | grep -qF "$1"; then
-        git push "$1" "${@}"
+        remote="$1"
+        shift
+        git push $remote "${@}"
     else
         shift
         git push origin "${@}"
