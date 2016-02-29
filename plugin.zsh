@@ -8,7 +8,12 @@ function git-smart-commit() {
             shift
         done
 
-        git commit "${flags[@]}" -m "$(echo "${@}")"
+        local message="$(echo "${@}")"
+        if [ ${#message} -ge 50 ]; then
+            flags+=(-e)
+        fi
+
+        git commit "${flags[@]}" -m "$message"
     fi
 }
 
