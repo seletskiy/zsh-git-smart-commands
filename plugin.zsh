@@ -58,6 +58,8 @@ function git-smart-pull() {
     else
         git pull "${@}"
     fi
+
+    git submodule update
 }
 
 function git-smart-remote() {
