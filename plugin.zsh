@@ -26,13 +26,27 @@ function git-smart-add() {
 }
 
 function git-smart-push() {
+    local branch_name=$(git symbolic-ref --short HEAD)
+
+    if ! git config branch.$branch_name.remote >&-; then
+        if [ $# -eq 1 ]; then
+            PUSH_FLAGS=(--set-upstream) _push-to-or-origin "${@}" $branch_name
+        else
+            PUSH_FLAGS=(--set-upstream) _push-to-or-origin "${@}"
+        fi
+    else
+        _push-to-or-origin "${@}"
+    fi
+}
+
+function _push-to-or-origin() {
+    local custom_origin="$1"
+
     if git remote show -n | grep -qF "$1"; then
-        local remote="$1"
-        shift
-        git push $remote "${@}"
+        git push $PUSH_FLAGS "$1" "${@}"
     else
         shift
-        git push origin "${@}"
+        git push $PUSH_FLAGS origin "${@}"
     fi
 }
 
