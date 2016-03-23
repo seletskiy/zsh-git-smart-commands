@@ -59,6 +59,7 @@ function git-smart-pull() {
         git pull "${@}"
     fi
 
+    git submodule init
     git submodule update
 }
 
