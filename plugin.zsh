@@ -41,11 +41,11 @@ function git-smart-push() {
 
 function _push-to-or-origin() {
     local custom_origin="$1"
+    shift
 
-    if git remote show -n | grep -qF "$1"; then
-        git push $PUSH_FLAGS "$1" "${@}"
+    if git remote show -n | grep -qF "$custom_origin"; then
+        git push $PUSH_FLAGS "$custom_origin" "${@}"
     else
-        shift
         git push $PUSH_FLAGS origin "${@}"
     fi
 }
