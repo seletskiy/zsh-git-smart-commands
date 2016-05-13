@@ -3,6 +3,12 @@ function git-smart-commit() {
         git commit -v
     else
         local flags=()
+
+        if [ "$(git status --porcelain | cut -b1 | awk '$1')" = "" ]; then
+            git status -s
+            flags+=(-a)
+        fi
+
         while grep -q "^-" <<< "$1"; do
             flags+=("$1")
             shift
