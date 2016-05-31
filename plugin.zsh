@@ -65,8 +65,12 @@ function git-smart-pull() {
         git pull "${@}"
     fi
 
-    git submodule init
-    git submodule update
+    git submodule status \
+        | awk '{print $2}' \
+        | xargs -P10 -n1 git submodule update --init
+
+    #git submodule init
+    #git submodule update
 }
 
 function git-smart-remote() {
