@@ -19,7 +19,7 @@ function git-smart-commit() {
             flags+=(-e)
         fi
 
-        git commit "${flags[@]}" -m "$message"
+        git commit "${flags[@]}" "${message:+-m"$message"}"
     fi
 }
 
