@@ -1,4 +1,4 @@
-function git-smart-commit() {
+git-smart-commit() {
     if [ $# -eq 0 ]; then
         git commit -v
     else
@@ -23,7 +23,7 @@ function git-smart-commit() {
     fi
 }
 
-function git-smart-add() {
+git-smart-add() {
     if [ $# -eq 0 ]; then
         git add .
     else
@@ -31,7 +31,7 @@ function git-smart-add() {
     fi
 }
 
-function git-smart-push() {
+git-smart-push() {
     local branch_name=$(git symbolic-ref --short HEAD)
 
     if ! git config branch.$branch_name.remote >&-; then
@@ -45,7 +45,7 @@ function git-smart-push() {
     fi
 }
 
-function _push-to-or-origin() {
+_push-to-or-origin() {
     local custom_origin="$1"
     shift
 
@@ -56,7 +56,7 @@ function _push-to-or-origin() {
     fi
 }
 
-function git-smart-pull() {
+git-smart-pull() {
     if [ "$(git status -s)" ]; then
         git stash -u
         git pull "${@}"
@@ -73,10 +73,18 @@ function git-smart-pull() {
     #git submodule update
 }
 
-function git-smart-remote() {
+git-smart-remote() {
     if [ "$(git remote show -n)" ]; then
         git remote "${@}"
     else
         git remote add origin "${@}"
+    fi
+}
+
+git-smart-checkout() {
+    if [[ -e "$1" ]]; then
+        git checkout -- "${@}"
+    else
+        git checkout "${@}"
     fi
 }
