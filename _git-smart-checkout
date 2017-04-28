@@ -1,0 +1,7 @@
+#compdef git-smart-checkout
+
+function _git-smart-checkout() {
+    service="git-checkout" _git "${@}"
+}
+
+_git-smart-checkout "${@}"
