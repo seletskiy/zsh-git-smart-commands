@@ -1,9 +1,9 @@
 # zsh-git-smart-commands
 
-Wrappers for common git commands so they can be used in the aliases very
+Wrappers for common git commands so they can be used in aliases very
 efficiently.
 
-All commands comes with default git completion.
+All commands come with default git completion.
 
 # Installation
 
@@ -15,7 +15,7 @@ zgen load seletskiy/zsh-git-smart-commands
 
 ## git-smart-commit
 
-With arguments same as `git commit -m`. Without argumenst behaves like `git
+With arguments same as `git commit -m`. Without arguments behaves like `git
 commit -v`.
 
 Also, removes necessity of quotes around commit message.
