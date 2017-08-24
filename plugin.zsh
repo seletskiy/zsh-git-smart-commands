@@ -19,7 +19,11 @@ git-smart-commit() {
             flags+=(-e)
         fi
 
-        git commit "${flags[@]}" "${message:+-m"$message"}"
+        if [[ -n "$message" ]]; then
+            git commit "${flags[@]}" -m "$message"
+        else
+            git commit "${flags[@]}"
+        fi
     fi
 }
 
