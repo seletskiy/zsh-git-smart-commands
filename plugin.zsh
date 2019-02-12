@@ -3,16 +3,24 @@ git-smart-commit() {
         git commit -v
     else
         local flags=()
-
-        if [ "$(git status --porcelain | cut -b1 | awk '$1')" = "" ]; then
-            git add -A
-            git status -s
-        fi
+        local amend=false
 
         while grep -q "^-" <<< "$1"; do
             flags+=("$1")
+
+            if [[ "$1" == "--amend" ]]; then
+                amend=true
+            fi
+
             shift
         done
+
+        if [ "$(git status --porcelain | cut -b1 | awk '$1')" = "" ]; then
+            if ! $amend; then
+                git add -A
+                git status -s
+            fi
+        fi
 
         local message="$(echo "${@}")"
         if [ ${#message} -ge 50 ]; then
@@ -92,3 +100,17 @@ git-smart-checkout() {
         git checkout "${@}"
     fi
 }
+
+autoload -U _git-smart-checkout
+autoload -U _git-smart-add
+autoload -U _git-smart-commit
+autoload -U _git-smart-push
+autoload -U _git-smart-pull
+autoload -U _git-smart-remote
+
+compdef _git-smart-checkout git-smart-checkout
+compdef _git-smart-add git-smart-add
+compdef _git-smart-commit git-smart-commit
+compdef _git-smart-push git-smart-push
+compdef _git-smart-pull git-smart-pull
+compdef _git-smart-remote git-smart-remote
