@@ -70,7 +70,7 @@ _push-to-or-origin() {
 
 git-smart-pull() {
     if [ "$(git status -s)" ]; then
-        git stash -u
+        git stash
         git pull "${@}"
         git stash pop
     else
