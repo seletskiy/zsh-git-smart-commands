@@ -28,9 +28,9 @@ git-smart-commit() {
         fi
 
         if [[ -n "$message" ]]; then
-            git commit "${flags[@]}" -m "$message"
+            git commit -v "${flags[@]}" -m "$message"
         else
-            git commit "${flags[@]}"
+            git commit -v "${flags[@]}"
         fi
     fi
 }
